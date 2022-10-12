@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<state_machine name="Clamp">
+    <events>
+        <event id="1" name="To_Tight"/>
+        <event id="2" name="To_Loose"/>
+        <event id="3" name="Trigger"/>
+    </events>
+    <states>
+        <state id="1" name="Tight">
+            <entry_action>
+                <describe></describe>
+            </entry_action>
+            <exit_action>
+                <describe></describe>
+            </exit_action>
+            <event_actions>
+                <event_action>
+                    <event>Trigger</event>
+                    <describe></describe>
+                </event_action>
+            </event_actions>
+            <transitions>
+                <transition>
+                    <event>To_Loose</event>
+                    <next_state>Loose</next_state>
+                </transition>
+            </transitions>
+        </state>
+        <state id="2" name="Loose">
+            <entry_action>
+                <describe></describe>
+            </entry_action>
+            <exit_action>
+                <describe></describe>
+            </exit_action>
+            <event_actions>
+                <event_action>
+                    <event>Trigger</event>
+                    <describe></describe>
+                </event_action>
+            </event_actions>
+            <transitions>
+                <transition>
+                    <event>To_Tight</event>
+                    <next_state>Tight</next_state>
+                </transition>
+            </transitions>
+        </state>
+    </states>
+</state_machine>
