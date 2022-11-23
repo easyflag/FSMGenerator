@@ -12,6 +12,7 @@ SOURCES += \
     main.cpp
 
 HEADERS += \
+    ClampFSM.h \
     FSMBase.h \
     ClampFSMDef.h
 

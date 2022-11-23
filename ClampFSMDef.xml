@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <state_machine name="Clamp">
     <events>
-        <event id="1" name="To_Tight"/>
-        <event id="2" name="To_Loose"/>
-        <event id="3" name="Trigger"/>
+        <event id="1" name="To_Tight" />
+        <event id="2" name="To_Loose" />
+        <event id="3" name="Trigger" />
     </events>
     <states>
         <state id="1" name="Tight">

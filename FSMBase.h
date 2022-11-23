@@ -18,7 +18,9 @@ struct FSMNode
 class FSMBase
 {
 public:
-    explicit FSMBase();
+    explicit FSMBase() {
+
+    }
 
     int currentStateId() const
     {
