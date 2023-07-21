@@ -1,8 +1,7 @@
-'''
-qqq
-'''
+'''gen'''
+
 from argparse import ArgumentParser
-import xml.parsers.expat 
+import xml.parsers.expat
 
 
 class FSMXML(object):
@@ -22,12 +21,11 @@ class FSMXML(object):
         def end_element(name):
             element_stack.pop()
 
-        with open(filename, mode='rb') as f:
-            p = xml.parsers.expat.ParserCreate()
-            p.StartElementHandler = start_element
-            p.EndElementHandler = end_element
-            p.ParseFile(f)
-    
+        with open(filename, mode='rb') as file:
+            parser = xml.parsers.expat.ParserCreate()
+            parser.StartElementHandler = start_element
+            parser.EndElementHandler = end_element
+            parser.ParseFile(file)
 
 
 if __name__ == "__main__":

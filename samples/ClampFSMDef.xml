@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <state_machine name="Clamp">
     <events>
-        <event id="1" name="To_Tight" />
-        <event id="2" name="To_Loose" />
-        <event id="3" name="Trigger" />
+        <event id="1" name="to_tight" />
+        <event id="2" name="to_loose" />
+        <event id="3" name="trigger" />
     </events>
     <states>
-        <state id="1" name="Tight">
+        <state id="1" name="tight">
             <entry_action>
                 <describe></describe>
             </entry_action>
@@ -15,18 +15,18 @@
             </exit_action>
             <event_actions>
                 <event_action>
-                    <event>Trigger</event>
+                    <event>trigger</event>
                     <describe></describe>
                 </event_action>
             </event_actions>
             <transitions>
                 <transition>
-                    <event>To_Loose</event>
-                    <next_state>Loose</next_state>
+                    <event>to_loose</event>
+                    <next_state>loose</next_state>
                 </transition>
             </transitions>
         </state>
-        <state id="2" name="Loose">
+        <state id="2" name="loose">
             <entry_action>
                 <describe></describe>
             </entry_action>
@@ -35,16 +35,17 @@
             </exit_action>
             <event_actions>
                 <event_action>
-                    <event>Trigger</event>
+                    <event>trigger</event>
                     <describe></describe>
                 </event_action>
             </event_actions>
             <transitions>
                 <transition>
-                    <event>To_Tight</event>
-                    <next_state>Tight</next_state>
+                    <event>to_tight</event>
+                    <next_state>tight</next_state>
                 </transition>
             </transitions>
         </state>
     </states>
+    <initial_state>tight</initial_state>
 </state_machine>
