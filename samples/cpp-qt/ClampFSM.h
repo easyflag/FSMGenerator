@@ -8,35 +8,42 @@ class ClampFSM : public ClampFSMDef
 {
 public:
     ClampFSM(QFile *context)
-        : ClampFSMDef()
+        : ClampFSMDef(context)
     {
         _context = context;
-//        _init();
     }
 
 protected:
-    void TightOnEnter() override   {
+    void TightOnEnter() override
+    {
         qDebug() << "ClampFSM::TightOnEnter";
-        qDebug() << _context->write("TightOnEnter\n");
+        _context->write("TightOnEnter\n");
     }
-    void TightOnExit() override   {
+    void TightOnExit() override
+    {
         qDebug() << "ClampFSM::TightOnExit";
-        qDebug() << _context->write("TightOnExit\n");
+        _context->write("TightOnExit\n");
     }
-    void TightOnEvent_Trigger() override   {
+    void TightOnEvent_Trigger() override
+    {
         qDebug() << "ClampFSM::TightOnEvent_Trigger";
+        _context->write("TightOnEvent_Trigger\n");
     }
 
-    void LooseOnEnter() override   {
+    void LooseOnEnter() override
+    {
         qDebug() << "ClampFSM::LooseOnEnter";
-        qDebug() << _context->write("LooseOnEnter\n");
+        _context->write("LooseOnEnter\n");
     }
-    void LooseOnExit() override   {
+    void LooseOnExit() override
+    {
         qDebug() << "ClampFSM::LooseOnExit";
-        qDebug() << _context->write("LooseOnExit\n");
+        _context->write("LooseOnExit\n");
     }
-    void LooseOnEvent_Trigger() override   {
+    void LooseOnEvent_Trigger() override
+    {
         qDebug() << "ClampFSM::LooseOnEvent_Trigger";
+        _context->write("LooseOnEvent_Trigger\n");
     }
 
 private:

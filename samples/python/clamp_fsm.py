@@ -10,7 +10,6 @@ class ClampFSM (ClampFSMDef):
         super().__init__()
 
         self.__context = context
-        self._current_state_id = ClampFSMDef.StateId.LOOSE
 
     def _TIGHT_on_enter(self):
         print("ClampFSM::TightOnEnter")

@@ -47,5 +47,5 @@
             </transitions>
         </state>
     </states>
-    <initial_state>tight</initial_state>
+    <initial_state>loose</initial_state>
 </state_machine>

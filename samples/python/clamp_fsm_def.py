@@ -27,6 +27,8 @@ class ClampFSMDef(FSMBase):
         self._fsm_name = "ClampFSM"
         self.__init_TIGHT()
         self.__init_LOOSE()
+        self._current_state_id = ClampFSMDef.StateId.LOOSE
+
 
     @abstractmethod
     def _TIGHT_on_enter(self):

@@ -16,12 +16,13 @@ public:
         Loose = 2
     };
 
-    ClampFSMDef()
-        : FSMBase()
+    ClampFSMDef(QObject *parent = nullptr)
+        : FSMBase(parent)
     {
         _fsmName = "ClampFSM";
         _initTight();
         _initLoose();
+        _currentStateId = Loose;
     }
 
 protected:
@@ -37,34 +38,22 @@ private:
     void _initTight()
     {
         FSMNode node;
-        node.id = Tight;
-        node.entryAction = [this]() {
-            TightOnEnter();
-        };
-        node.exitAction = [this]() {
-            TightOnExit();
-        };
-        node.eventActions[Trigger] = [this]() {
-            TightOnEvent_Trigger();
-        };
+        node.stateId = Tight;
+        node.entryAction = std::bind(&ClampFSMDef::TightOnEnter, this);
+        node.exitAction = std::bind(&ClampFSMDef::TightOnExit, this);
+        node.eventActions[Trigger] = std::bind(&ClampFSMDef::TightOnEvent_Trigger, this);
         node.transitions[To_Loose] = Loose;
-        _fsmNodeTab[Tight] = node;
+        _fsmNodes[Tight] = node;
     }
 
     void _initLoose()
     {
         FSMNode node;
-        node.id = Loose;
-        node.entryAction = [this]() {
-            LooseOnEnter();
-        };
-        node.exitAction = [this]() {
-            LooseOnExit();
-        };
-        node.eventActions[Trigger] = [this]() {
-            LooseOnEvent_Trigger();
-        };
+        node.stateId = Loose;
+        node.entryAction = std::bind(&ClampFSMDef::LooseOnEnter, this);
+        node.exitAction = std::bind(&ClampFSMDef::LooseOnExit, this);
+        node.eventActions[Trigger] = std::bind(&ClampFSMDef::LooseOnEvent_Trigger, this);
         node.transitions[To_Tight] = Tight;
-        _fsmNodeTab[Loose] = node;
+        _fsmNodes[Loose] = node;
     }
 };

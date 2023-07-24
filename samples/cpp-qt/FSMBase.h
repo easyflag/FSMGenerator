@@ -4,8 +4,8 @@
 #include <QDebug>
 
 struct FSMNode
-{    
-    int id;
+{
+    int stateId;
 
     std::function<void()> entryAction;
     std::function<void()> exitAction;
@@ -15,11 +15,14 @@ struct FSMNode
     QMap<int, int> transitions;
 };
 
-class FSMBase
+class FSMBase : public QObject
 {
-public:
-    explicit FSMBase() {
+    Q_OBJECT
 
+public:
+    explicit FSMBase(QObject *parent = nullptr)
+        : QObject(parent)
+    {
     }
 
     int currentStateId() const
@@ -32,49 +35,53 @@ public:
         _handleEvent(eventId);
     }
 
+signals:
+    void currentStateIdChanged();
+
 protected:
     QString _fsmName;
-    QMap<int, FSMNode> _fsmNodeTab;
+    QMap<int, FSMNode> _fsmNodes;
     int _currentStateId;
 
 private:
     void _handleEvent(int eventId)
     {
-        if(_fsmNodeTab[_currentStateId].eventActions.contains(eventId)) {
-            doEventAction(eventId);
+        if (_fsmNodes[_currentStateId].eventActions.contains(eventId))
+        {
+            _doEventAction(eventId);
         }
         _handleTransition(eventId);
     }
 
     void _handleTransition(int eventId)
     {
-        if(_fsmNodeTab[_currentStateId].transitions.contains(eventId)) {
-            doExitAction();
-            _goToState(_fsmNodeTab[_currentStateId].transitions[eventId]);
+        if (_fsmNodes[_currentStateId].transitions.contains(eventId))
+        {
+            _doExitAction();
+            _goToState(_fsmNodes[_currentStateId].transitions[eventId]);
         }
     }
 
-    void doEventAction(int eventId)
+    void _doEventAction(int eventId)
     {
-        _fsmNodeTab[_currentStateId].eventActions[eventId]();
+        _fsmNodes[_currentStateId].eventActions[eventId]();
     }
 
-    void doEntryAction()
+    void _doEntryAction()
     {
-        _fsmNodeTab[_currentStateId].entryAction();
+        _fsmNodes[_currentStateId].entryAction();
     }
 
-    void doExitAction()
+    void _doExitAction()
     {
-        _fsmNodeTab[_currentStateId].exitAction();
+        _fsmNodes[_currentStateId].exitAction();
     }
 
     void _goToState(int stateId)
     {
         qDebug() << _fsmName << "go to state:" << stateId;
-
         _currentStateId = stateId;
-        doEntryAction();
+        emit currentStateIdChanged();
+        _doEntryAction();
     }
 };
-
