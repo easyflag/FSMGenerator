@@ -8,15 +8,15 @@
     <states>
         <state id="1" name="tight">
             <entry_action>
-                <describe></describe>
+                <describe>do something</describe>
             </entry_action>
             <exit_action>
-                <describe></describe>
+                <describe>do something</describe>
             </exit_action>
             <event_actions>
                 <event_action>
                     <event>trigger</event>
-                    <describe></describe>
+                    <describe>do something</describe>
                 </event_action>
             </event_actions>
             <transitions>
@@ -28,15 +28,15 @@
         </state>
         <state id="2" name="loose">
             <entry_action>
-                <describe></describe>
+                <describe>do something</describe>
             </entry_action>
             <exit_action>
-                <describe></describe>
+                <describe>do something</describe>
             </exit_action>
             <event_actions>
                 <event_action>
                     <event>trigger</event>
-                    <describe></describe>
+                    <describe>do something</describe>
                 </event_action>
             </event_actions>
             <transitions>
@@ -47,5 +47,5 @@
             </transitions>
         </state>
     </states>
-    <initial_state>loose</initial_state>
+    <first_state>loose</first_state>
 </state_machine>
