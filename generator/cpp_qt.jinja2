@@ -1,0 +1,73 @@
+/* This file is auto generated,don't modfiy it. */
+
+#pragma once
+
+#include "FSMBase.h"
+
+class {{ fsm.name | capitalize }}FSMDef : public FSMBase
+{
+public:
+    enum EventId {
+        {% for event in fsm.events %}
+        {{ event.name | upper }} = {{ event.id }}{% if not loop.last %},{% endif %}
+        
+        {% endfor %}
+    };
+
+    enum StateId {
+        {% for state in fsm.states %}
+        {{ state.name | upper }} = {{ state.id }}{% if not loop.last %},{% endif %}
+        
+        {% endfor %}
+    };
+
+    {{ fsm.name | capitalize }}FSMDef(QObject *parent = nullptr)
+        : FSMBase(parent)
+    {
+        _fsmName = "{{ fsm.name | capitalize }}FSM";
+
+        {% for state in fsm.states %}
+        _init{{ state.name | upper }}();
+        {% endfor %}     
+        _currentStateId = {{ fsm.first_state | upper }};
+    }
+
+protected:
+    {% for state in fsm.states %}
+    /// need implement: {{ state.entry_action.describe }}
+    virtual void {{ state.name | upper }}OnEnter() = 0;
+
+    /// need implement: {{ state.exit_action.describe }}
+    virtual void {{ state.name | upper }}OnExit() = 0;
+
+    {% for action in state.event_actions %}
+    /// need implement: {{ action.describe }}
+    virtual void {{ state.name | upper }}OnEvent_{{ action.event | upper }}() = 0;
+    {% endfor %}
+    {% if not loop.last %}
+    
+    {% endif %}
+    {% endfor %}
+
+private:
+    {% for state in fsm.states %}
+    void _init{{ state.name | upper }}()
+    {
+        FSMNode node;
+        node.stateId = {{ state.name | upper }};
+        node.entryAction = std::bind(&{{ fsm.name | capitalize }}FSMDef::{{ state.name | upper }}OnEnter, this);
+        node.exitAction = std::bind(&{{ fsm.name | capitalize }}FSMDef::{{ state.name | upper }}OnExit, this);
+        {% for action in state.event_actions %}
+        node.eventActions[{{ action.event | upper }}] = std::bind(&{{ fsm.name | capitalize }}FSMDef::{{ state.name | upper }}OnEvent_{{ action.event | upper }}, this);
+        {% endfor %}
+        {% for transition in state.transitions %}
+        node.transitions[{{ transition.event | upper }}] = {{ transition.next_state | upper }};
+        {% endfor %}
+        _fsmNodes[{{ state.name | upper }}] = node;
+    }
+    {% if not loop.last %}
+
+    {% endif %}
+    {% endfor %}
+};
+

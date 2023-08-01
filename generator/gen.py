@@ -1,6 +1,7 @@
 '''gen'''
 
 from argparse import ArgumentParser
+import os
 import xml.parsers.expat
 from jinja2 import Environment, FileSystemLoader
 
@@ -80,25 +81,25 @@ class FSMXML():
         def end_element(name):
             element_stack.pop()
 
-        def char_data(str):
-            if str == '\n' or str.strip() == '':
+        def char_data(chars):
+            if chars == '\n' or chars.strip() == '':
                 return
 
             element_chain = '.'.join(element_stack)
             if element_chain == 'state_machine.states.state.entry_action.describe':
-                self.states[-1].entry_action.describe = str
+                self.states[-1].entry_action.describe = chars
             elif element_chain == 'state_machine.states.state.exit_action.describe':
-                self.states[-1].exit_action.describe = str
+                self.states[-1].exit_action.describe = chars
             elif element_chain == 'state_machine.states.state.event_actions.event_action.event':
-                self.states[-1].event_actions[-1].event = str
+                self.states[-1].event_actions[-1].event = chars
             elif element_chain == 'state_machine.states.state.event_actions.event_action.describe':
-                self.states[-1].event_actions[-1].describe = str
+                self.states[-1].event_actions[-1].describe = chars
             elif element_chain == 'state_machine.states.state.transitions.transition.event':
-                self.states[-1].transitions[-1].event = str
+                self.states[-1].transitions[-1].event = chars
             elif element_chain == 'state_machine.states.state.transitions.transition.next_state':
-                self.states[-1].transitions[-1].next_state = str
+                self.states[-1].transitions[-1].next_state = chars
             elif element_chain == 'state_machine.first_state':
-                self.first_state = str
+                self.first_state = chars
 
         with open(filename, mode='rb') as file:
             parser = xml.parsers.expat.ParserCreate()
@@ -109,14 +110,23 @@ class FSMXML():
 
 
 class Generator():
-    def __init__(self, template):
-        self.__template = template
+    '''Generator'''
 
-    def gen(self, fsm, filename):
-        env = Environment(loader=FileSystemLoader('./'))
-        template = env.get_template(self.__template)
-        content = template.render(name='22')
-        print(content)
+    def __init__(self, template):
+        # self.__template = template
+        path = os.path.dirname(__file__) + '/'
+        env = Environment(loader=FileSystemLoader(path),
+                          trim_blocks=True,
+                          lstrip_blocks=True)
+        self.template = env.get_template(template)
+
+    def gen(self, fsm, path):
+        '''gen'''
+        content = self.template.render(fsm=fsm)
+        filename = path + f'/{fsm.name}FSMDef.h'
+        with open(filename, 'w', encoding='utf-8') as file:
+            file.write(content)
+            print(f'{filename} generated!')
 
 
 if __name__ == '__main__':
@@ -127,6 +137,6 @@ if __name__ == '__main__':
     args = paser.parse_args()
     print(args)
 
-    fsm = FSMXML(args.input)
-    gen = Generator('cpp_qt.j2')
-    gen.gen(fsm, args.output)
+    fsmxml = FSMXML(args.input)
+    gen = Generator('cpp_qt.jinja2')
+    gen.gen(fsmxml, args.output)
