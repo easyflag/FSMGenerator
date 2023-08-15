@@ -4,7 +4,9 @@
 
 #include "FSMBase.h"
 
-class {{ fsm.name | capitalize }}FSMDef : public FSMBase
+#include <QTimer>
+
+class {{ fsm.name }}FSMDef : public FSMBase
 {
 public:
     enum EventId {
@@ -21,44 +23,48 @@ public:
         {% endfor %}
     };
 
-    {{ fsm.name | capitalize }}FSMDef(QObject *parent = nullptr)
+    {{ fsm.name }}FSMDef(QObject *parent = nullptr)
         : FSMBase(parent)
     {
-        _fsmName = "{{ fsm.name | capitalize }}FSM";
+        _fsmName = "{{ fsm.name }}FSM";
 
         {% for state in fsm.states %}
-        _init{{ state.name | upper }}();
+        _init_{{ state.name | upper }}();
         {% endfor %}     
         _currentStateId = {{ fsm.first_state | upper }};
+
+        QTimer::singleShot(0, this, [this] {
+            postEvent({{ fsm.auto_transit_event | upper }});
+        });
     }
 
 protected:
     {% for state in fsm.states %}
-    /// need implement: {{ state.entry_action.describe }}
-    virtual void {{ state.name | upper }}OnEnter() = 0;
-
-    /// need implement: {{ state.exit_action.describe }}
-    virtual void {{ state.name | upper }}OnExit() = 0;
-
-    {% for action in state.event_actions %}
-    /// need implement: {{ action.describe }}
-    virtual void {{ state.name | upper }}OnEvent_{{ action.event | upper }}() = 0;
-    {% endfor %}
-    {% if not loop.last %}
+    /// need implement:{{ state.entry_action.describe if state.entry_action.describe is defined else 'None' }}
+    virtual void {{ state.name | upper }}_OnEnter() = 0;
     
+    /// need implement:{{ state.exit_action.describe if state.exit_action.describe is defined else 'None' }}
+    virtual void {{ state.name | upper }}_OnExit() = 0;
+    {% for action in state.event_actions %}
+
+    /// need implement:{{ action.describe if action.describe is defined else 'None' }}
+    virtual void {{ state.name | upper }}_OnEvent_{{ action.event | upper }}() = 0;
+    {% endfor %}
+
+    {% if not loop.last %}
+
     {% endif %}
     {% endfor %}
-
 private:
     {% for state in fsm.states %}
-    void _init{{ state.name | upper }}()
+    void _init_{{ state.name | upper }}()
     {
         FSMNode node;
         node.stateId = {{ state.name | upper }};
-        node.entryAction = std::bind(&{{ fsm.name | capitalize }}FSMDef::{{ state.name | upper }}OnEnter, this);
-        node.exitAction = std::bind(&{{ fsm.name | capitalize }}FSMDef::{{ state.name | upper }}OnExit, this);
+        node.entryAction = std::bind(&{{ fsm.name }}FSMDef::{{ state.name | upper }}_OnEnter, this);
+        node.exitAction = std::bind(&{{ fsm.name }}FSMDef::{{ state.name | upper }}_OnExit, this);
         {% for action in state.event_actions %}
-        node.eventActions[{{ action.event | upper }}] = std::bind(&{{ fsm.name | capitalize }}FSMDef::{{ state.name | upper }}OnEvent_{{ action.event | upper }}, this);
+        node.eventActions[{{ action.event | upper }}] = std::bind(&{{ fsm.name }}FSMDef::{{ state.name | upper }}_OnEvent_{{ action.event | upper }}, this);
         {% endfor %}
         {% for transition in state.transitions %}
         node.transitions[{{ transition.event | upper }}] = {{ transition.next_state | upper }};

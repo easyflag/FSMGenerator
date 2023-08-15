@@ -47,6 +47,7 @@ class FSMXML():
         self.events = []
         self.states = []
         self.first_state = ''
+        self.auto_transit_event = ''
 
         element_stack = []
 
@@ -100,6 +101,8 @@ class FSMXML():
                 self.states[-1].transitions[-1].next_state = chars
             elif element_chain == 'state_machine.first_state':
                 self.first_state = chars
+            elif element_chain == 'state_machine.auto_transit_event':
+                self.auto_transit_event = chars
 
         with open(filename, mode='rb') as file:
             parser = xml.parsers.expat.ParserCreate()
