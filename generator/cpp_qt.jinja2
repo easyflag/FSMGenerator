@@ -40,17 +40,21 @@ public:
 
 protected:
     {% for state in fsm.states %}
+    {% if state.entry_action %}
     /// need implement:{{ state.entry_action.describe if state.entry_action.describe is defined else 'None' }}
     virtual void {{ state.name | upper }}_OnEnter() = 0;
-    
+
+    {% endif %}
+    {% if state.exit_action %}
     /// need implement:{{ state.exit_action.describe if state.exit_action.describe is defined else 'None' }}
     virtual void {{ state.name | upper }}_OnExit() = 0;
-    {% for action in state.event_actions %}
 
+    {% endif %}
+    {% for action in state.event_actions %}
     /// need implement:{{ action.describe if action.describe is defined else 'None' }}
     virtual void {{ state.name | upper }}_OnEvent_{{ action.event | upper }}() = 0;
-    {% endfor %}
 
+    {% endfor %}
     {% if not loop.last %}
 
     {% endif %}
@@ -61,8 +65,16 @@ private:
     {
         FSMNode node;
         node.stateId = {{ state.name | upper }};
+        {% if state.entry_action %}
         node.entryAction = std::bind(&{{ fsm.name }}FSMDef::{{ state.name | upper }}_OnEnter, this);
+        {% else %}
+        node.entryAction = nullptr;
+        {% endif %}
+        {% if state.exit_action %}
         node.exitAction = std::bind(&{{ fsm.name }}FSMDef::{{ state.name | upper }}_OnExit, this);
+        {% else %}
+        node.exitAction = nullptr;
+        {% endif %}
         {% for action in state.event_actions %}
         node.eventActions[{{ action.event | upper }}] = std::bind(&{{ fsm.name }}FSMDef::{{ state.name | upper }}_OnEvent_{{ action.event | upper }}, this);
         {% endfor %}

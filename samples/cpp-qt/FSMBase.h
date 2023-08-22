@@ -1,6 +1,5 @@
 #pragma once
 
-#include <QMap>
 #include <QDebug>
 
 struct FSMNode
@@ -39,15 +38,14 @@ signals:
     void currentStateIdChanged();
 
 protected:
-    QString _fsmName;
-    QMap<int, FSMNode> _fsmNodes;
-    int _currentStateId;
+    QString             _fsmName;
+    QMap<int, FSMNode>  _fsmNodes;
+    int                 _currentStateId;
 
 private:
     void _handleEvent(int eventId)
     {
-        if (_fsmNodes[_currentStateId].eventActions.contains(eventId))
-        {
+        if (_fsmNodes[_currentStateId].eventActions.contains(eventId)) {
             _doEventAction(eventId);
         }
         _handleTransition(eventId);
@@ -55,8 +53,7 @@ private:
 
     void _handleTransition(int eventId)
     {
-        if (_fsmNodes[_currentStateId].transitions.contains(eventId))
-        {
+        if (_fsmNodes[_currentStateId].transitions.contains(eventId)) {
             _doExitAction();
             _goToState(_fsmNodes[_currentStateId].transitions[eventId]);
         }
@@ -69,17 +66,19 @@ private:
 
     void _doEntryAction()
     {
-        _fsmNodes[_currentStateId].entryAction();
+        if (_fsmNodes[_currentStateId].entryAction)
+            _fsmNodes[_currentStateId].entryAction();
     }
 
     void _doExitAction()
     {
-        _fsmNodes[_currentStateId].exitAction();
+        if (_fsmNodes[_currentStateId].exitAction)
+            _fsmNodes[_currentStateId].exitAction();
     }
 
     void _goToState(int stateId)
     {
-        qDebug() << _fsmName << "go to state:" << stateId;
+        qDebug() << _fsmName << "state from" << _currentStateId << "to" << stateId;
         _currentStateId = stateId;
         emit currentStateIdChanged();
         _doEntryAction();
