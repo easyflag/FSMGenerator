@@ -34,6 +34,11 @@ public:
         _handleEvent(eventId);
     }
 
+    void setOutputLog(bool newOutputLog)
+    {
+        _outputLog = newOutputLog;
+    }
+
 signals:
     void currentStateIdChanged();
 
@@ -41,6 +46,7 @@ protected:
     QString             _fsmName;
     QMap<int, FSMNode>  _fsmNodes;
     int                 _currentStateId;
+    bool                _outputLog{true};
 
 private:
     void _handleEvent(int eventId)
@@ -78,7 +84,9 @@ private:
 
     void _goToState(int stateId)
     {
-        qDebug() << _fsmName << "state from" << _currentStateId << "to" << stateId;
+        if (_outputLog)
+            qDebug() << _fsmName << "state from" << _currentStateId << "to" << stateId;
+
         _currentStateId = stateId;
         emit currentStateIdChanged();
         _doEntryAction();
