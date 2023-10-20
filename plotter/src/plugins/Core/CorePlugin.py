@@ -6,9 +6,10 @@ class CorePlugin(IPlugin):
     def __init__(self) -> None:
         super().__init__()
 
-        self.__mainWin = MainWindow()
+        self.__mainWin = None
 
     def initialize(self):
         print("CorePlugin initialize")
 
+        self.__mainWin = MainWindow()
         self.__mainWin.initialize()
