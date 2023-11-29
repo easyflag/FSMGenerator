@@ -4,7 +4,7 @@ from libs.ExtensionSystem.PluginSpec import PluginSpec
 
 
 class PluginManager():
-    def __init__(self) -> None:
+    def __init__(self):
         self.__pluginPath = ''
         self.__pluginSpecs = []
 

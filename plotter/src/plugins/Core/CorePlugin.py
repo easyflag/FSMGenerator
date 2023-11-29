@@ -1,15 +1,15 @@
 from libs.ExtensionSystem.IPlugin import IPlugin
+
 from plugins.Core.MainWindow import MainWindow
 
 
 class CorePlugin(IPlugin):
-    def __init__(self) -> None:
+    def __init__(self):
         super().__init__()
 
-        self.__mainWin = None
+        self.__mainWin = MainWindow()
 
     def initialize(self):
         print("CorePlugin initialize")
 
-        self.__mainWin = MainWindow()
         self.__mainWin.initialize()

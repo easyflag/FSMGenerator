@@ -1,41 +1,30 @@
-from PySide2.QtWidgets import QMainWindow
-from PySide2.QtWidgets import QWidget
-from PySide2.QtWidgets import QGraphicsView
-from PySide2.QtWidgets import QGraphicsScene
-from PySide2.QtWidgets import QGraphicsRectItem
-from PySide2.QtWidgets import QGraphicsItem
-from PySide2.QtWidgets import QVBoxLayout
-from PySide2.QtCore import Qt
+from PySide6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QTabWidget, QSizePolicy
+
+from libs.ActionSystem.ActionContainer import TabContainer
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        # self.view = None
-        # self.scene = None
+        self.__actionContainer = None
 
     def initialize(self):
         self.resize(800, 600)
 
-        cWidget = QWidget()
-        self.setCentralWidget(cWidget)
+        centralWidget = QWidget(self)
+        self.setCentralWidget(centralWidget)
 
-        vbox = QVBoxLayout()
-        vbox.setSpacing(0)
-        vbox.setContentsMargins(0, 0, 0, 0)
-        cWidget.setLayout(vbox)
+        vLayout = QVBoxLayout()
+        vLayout.setSpacing(0)
+        vLayout.setContentsMargins(0, 0, 0, 0)
+        centralWidget.setLayout(vLayout)
 
-        view = QGraphicsView(cWidget)
-        vbox.addWidget(view)
+        tab = QTabWidget(centralWidget)
+        tab.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
+        tab.setMinimumSize(0, 100)
+        vLayout.addWidget(tab)
 
-        scene = QGraphicsScene()
-        scene.setBackgroundBrush(Qt.red)
-        view.setScene(scene)
-
-        rect = QGraphicsRectItem()
-        rect.setRect(0, 0, 100, 60)
-        rect.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable)
-        scene.addItem(rect)
+        self.__actionContainer = TabContainer(tab)
 
         self.show()
