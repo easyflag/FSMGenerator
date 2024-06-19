@@ -1,6 +1,6 @@
 #pragma once
 
-#include <QDebug>
+#include <QTimer>
 
 struct FSMNode
 {
@@ -31,22 +31,18 @@ public:
 
     void postEvent(int eventId)
     {
-        _handleEvent(eventId);
-    }
-
-    void setOutputLog(bool newOutputLog)
-    {
-        _outputLog = newOutputLog;
+        QTimer::singleShot(0, this, [this, eventId] {
+            _handleEvent(eventId);
+        });
     }
 
 signals:
     void currentStateIdChanged();
+    void logOutput(QString log);
 
 protected:
-    QString             _fsmName;
-    QMap<int, FSMNode>  _fsmNodes;
-    int                 _currentStateId;
-    bool                _outputLog{true};
+    virtual QString _eventIdString(int id) = 0;
+    virtual QString _stateIdString(int id) = 0;
 
 private:
     void _handleEvent(int eventId)
@@ -61,7 +57,7 @@ private:
     {
         if (_fsmNodes[_currentStateId].transitions.contains(eventId)) {
             _doExitAction();
-            _goToState(_fsmNodes[_currentStateId].transitions[eventId]);
+            _goToState(_fsmNodes[_currentStateId].transitions[eventId], eventId);
         }
     }
 
@@ -82,13 +78,22 @@ private:
             _fsmNodes[_currentStateId].exitAction();
     }
 
-    void _goToState(int stateId)
+    void _goToState(int stateId, int eventId)
     {
-        if (_outputLog)
-            qDebug() << _fsmName << "state from" << _currentStateId << "to" << stateId;
+        QString log = QString("%1 state from %2 to %3 by event %4")
+                          .arg(_fsmName)
+                          .arg(_stateIdString(_currentStateId))
+                          .arg(_stateIdString(stateId))
+                          .arg(_eventIdString(eventId));
+        emit logOutput(log);
 
         _currentStateId = stateId;
         emit currentStateIdChanged();
         _doEntryAction();
     }
+
+protected:
+    QString             _fsmName;
+    QMap<int, FSMNode>  _fsmNodes;
+    int                 _currentStateId;
 };

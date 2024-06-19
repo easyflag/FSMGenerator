@@ -1,13 +1,16 @@
-/* This file is auto generated,don't modfiy it. */
+/* 
+    This file is auto generated,don't modfiy it.
+    See https://github.com/easyflag/FSMGenerator
+*/
 
 #pragma once
 
 #include "FSMBase.h"
 
-#include <QTimer>
-
 class {{ fsm.name }}FSMDef : public FSMBase
 {
+    Q_OBJECT
+
 public:
     enum EventId {
         {% for event in fsm.events %}
@@ -15,6 +18,7 @@ public:
         
         {% endfor %}
     };
+    Q_ENUM(EventId)
 
     enum StateId {
         {% for state in fsm.states %}
@@ -22,6 +26,7 @@ public:
         
         {% endfor %}
     };
+    Q_ENUM(StateId)
 
     {{ fsm.name }}FSMDef(QObject *parent = nullptr)
         : FSMBase(parent)
@@ -33,25 +38,35 @@ public:
         {% endfor %}     
         _currentStateId = {{ fsm.first_state | upper }};
 
-        QTimer::singleShot(0, this, [this] {
-            postEvent({{ fsm.auto_transit_event | upper }});
-        });
+        postEvent({{ fsm.auto_transit_event | upper }});
+    }
+
+protected:
+    QString _eventIdString(int id) override
+    {
+        QMetaEnum e = QMetaEnum::fromType<EventId>();
+        return e.valueToKey(id);
+    }
+    QString _stateIdString(int id) override
+    {
+        QMetaEnum e = QMetaEnum::fromType<StateId>();
+        return e.valueToKey(id);
     }
 
 protected:
     {% for state in fsm.states %}
     {% if state.entry_action %}
-    /// need implement:{{ state.entry_action.describe if state.entry_action.describe is defined else 'None' }}
+    /// need implement: {{ state.entry_action.describe if state.entry_action.describe is defined else 'None' }}
     virtual void {{ state.name | upper }}_OnEnter() = 0;
 
     {% endif %}
     {% if state.exit_action %}
-    /// need implement:{{ state.exit_action.describe if state.exit_action.describe is defined else 'None' }}
+    /// need implement: {{ state.exit_action.describe if state.exit_action.describe is defined else 'None' }}
     virtual void {{ state.name | upper }}_OnExit() = 0;
 
     {% endif %}
     {% for action in state.event_actions %}
-    /// need implement:{{ action.describe if action.describe is defined else 'None' }}
+    /// need implement: {{ action.describe if action.describe is defined else 'None' }}
     virtual void {{ state.name | upper }}_OnEvent_{{ action.event | upper }}() = 0;
 
     {% endfor %}
