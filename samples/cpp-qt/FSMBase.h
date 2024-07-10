@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QMap>
 #include <QTimer>
 
 struct FSMNode
@@ -29,6 +30,11 @@ public:
         return _currentStateId;
     }
 
+    QString currentStateName() const
+    {
+        return _stateIdString(_currentStateId);
+    }
+
     void postEvent(int eventId)
     {
         QTimer::singleShot(0, this, [this, eventId] {
@@ -37,12 +43,12 @@ public:
     }
 
 signals:
-    void currentStateIdChanged();
+    void stateChanged();
     void logOutput(QString log);
 
 protected:
-    virtual QString _eventIdString(int id) = 0;
-    virtual QString _stateIdString(int id) = 0;
+    virtual QString _eventIdString(int id) const = 0;
+    virtual QString _stateIdString(int id) const = 0;
 
 private:
     void _handleEvent(int eventId)
@@ -81,14 +87,14 @@ private:
     void _goToState(int stateId, int eventId)
     {
         QString log = QString("%1 state from %2 to %3 by event %4")
-                          .arg(_fsmName)
-                          .arg(_stateIdString(_currentStateId))
-                          .arg(_stateIdString(stateId))
-                          .arg(_eventIdString(eventId));
+                      .arg(_fsmName)
+                      .arg(_stateIdString(_currentStateId))
+                      .arg(_stateIdString(stateId))
+                      .arg(_eventIdString(eventId));
         emit logOutput(log);
 
         _currentStateId = stateId;
-        emit currentStateIdChanged();
+        emit stateChanged();
         _doEntryAction();
     }
 

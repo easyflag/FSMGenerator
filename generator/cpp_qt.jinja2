@@ -1,11 +1,13 @@
 /* 
     This file is auto generated,don't modfiy it.
-    See https://github.com/easyflag/FSMGenerator
+    See https://github.com/easyflag/FSMGenerator to learn more.
 */
 
 #pragma once
 
 #include "FSMBase.h"
+
+#include <QMetaEnum>
 
 class {{ fsm.name }}FSMDef : public FSMBase
 {
@@ -42,12 +44,12 @@ public:
     }
 
 protected:
-    QString _eventIdString(int id) override
+    QString _eventIdString(int id) const override
     {
         QMetaEnum e = QMetaEnum::fromType<EventId>();
         return e.valueToKey(id);
     }
-    QString _stateIdString(int id) override
+    QString _stateIdString(int id) const override
     {
         QMetaEnum e = QMetaEnum::fromType<StateId>();
         return e.valueToKey(id);
@@ -103,4 +105,3 @@ private:
     {% endif %}
     {% endfor %}
 };
-
