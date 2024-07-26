@@ -1,0 +1,637 @@
+[
+    {
+        "label": "ArgumentParser",
+        "importPath": "argparse",
+        "description": "argparse",
+        "isExtraImport": true,
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "xml.parsers.expat",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "xml.parsers.expat",
+        "description": "xml.parsers.expat",
+        "detail": "xml.parsers.expat",
+        "documentation": {}
+    },
+    {
+        "label": "Environment",
+        "importPath": "jinja2",
+        "description": "jinja2",
+        "isExtraImport": true,
+        "detail": "jinja2",
+        "documentation": {}
+    },
+    {
+        "label": "FileSystemLoader",
+        "importPath": "jinja2",
+        "description": "jinja2",
+        "isExtraImport": true,
+        "detail": "jinja2",
+        "documentation": {}
+    },
+    {
+        "label": "QObject",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QSize",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Qt",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Signal",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "Qt",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QRectF",
+        "importPath": "PySide6.QtCore",
+        "description": "PySide6.QtCore",
+        "isExtraImport": true,
+        "detail": "PySide6.QtCore",
+        "documentation": {}
+    },
+    {
+        "label": "QIcon",
+        "importPath": "PySide6.QtGui",
+        "description": "PySide6.QtGui",
+        "isExtraImport": true,
+        "detail": "PySide6.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "QIcon",
+        "importPath": "PySide6.QtGui",
+        "description": "PySide6.QtGui",
+        "isExtraImport": true,
+        "detail": "PySide6.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "QIcon",
+        "importPath": "PySide6.QtGui",
+        "description": "PySide6.QtGui",
+        "isExtraImport": true,
+        "detail": "PySide6.QtGui",
+        "documentation": {}
+    },
+    {
+        "label": "QSizePolicy",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QToolButton",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QTableWidget",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QWidget",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QHBoxLayout",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QSizePolicy",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QSpacerItem",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QGraphicsItem",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QGraphicsRectItem",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QGraphicsTextItem",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QMenu",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QGraphicsSceneContextMenuEvent",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QMainWindow",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QWidget",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QVBoxLayout",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QTabWidget",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QSizePolicy",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QGraphicsView",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "QGraphicsScene",
+        "importPath": "PySide6.QtWidgets",
+        "description": "PySide6.QtWidgets",
+        "isExtraImport": true,
+        "detail": "PySide6.QtWidgets",
+        "documentation": {}
+    },
+    {
+        "label": "TabGroup",
+        "importPath": "libs.ActionSystem.ActionGroup",
+        "description": "libs.ActionSystem.ActionGroup",
+        "isExtraImport": true,
+        "detail": "libs.ActionSystem.ActionGroup",
+        "documentation": {}
+    },
+    {
+        "label": "TabAction",
+        "importPath": "libs.ActionSystem.Action",
+        "description": "libs.ActionSystem.Action",
+        "isExtraImport": true,
+        "detail": "libs.ActionSystem.Action",
+        "documentation": {}
+    },
+    {
+        "label": "PluginSpec",
+        "importPath": "libs.ExtensionSystem.PluginSpec",
+        "description": "libs.ExtensionSystem.PluginSpec",
+        "isExtraImport": true,
+        "detail": "libs.ExtensionSystem.PluginSpec",
+        "documentation": {}
+    },
+    {
+        "label": "importlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "importlib",
+        "description": "importlib",
+        "detail": "importlib",
+        "documentation": {}
+    },
+    {
+        "label": "yaml",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "yaml",
+        "description": "yaml",
+        "detail": "yaml",
+        "documentation": {}
+    },
+    {
+        "label": "IPlugin",
+        "importPath": "libs.ExtensionSystem.IPlugin",
+        "description": "libs.ExtensionSystem.IPlugin",
+        "isExtraImport": true,
+        "detail": "libs.ExtensionSystem.IPlugin",
+        "documentation": {}
+    },
+    {
+        "label": "MainWindow",
+        "importPath": "plugins.Core.MainWindow",
+        "description": "plugins.Core.MainWindow",
+        "isExtraImport": true,
+        "detail": "plugins.Core.MainWindow",
+        "documentation": {}
+    },
+    {
+        "label": "TabContainer",
+        "importPath": "libs.ActionSystem.ActionContainer",
+        "description": "libs.ActionSystem.ActionContainer",
+        "isExtraImport": true,
+        "detail": "libs.ActionSystem.ActionContainer",
+        "documentation": {}
+    },
+    {
+        "label": "FSMNodeItem",
+        "importPath": "plugins.Core.FSMNodeItem",
+        "description": "plugins.Core.FSMNodeItem",
+        "isExtraImport": true,
+        "detail": "plugins.Core.FSMNodeItem",
+        "documentation": {}
+    },
+    {
+        "label": "EventItem",
+        "importPath": "plugins.Core.FSMNodeItem",
+        "description": "plugins.Core.FSMNodeItem",
+        "isExtraImport": true,
+        "detail": "plugins.Core.FSMNodeItem",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "QtWidgets",
+        "importPath": "PySide6",
+        "description": "PySide6",
+        "isExtraImport": true,
+        "detail": "PySide6",
+        "documentation": {}
+    },
+    {
+        "label": "PluginManager",
+        "importPath": "libs.ExtensionSystem.PluginManager",
+        "description": "libs.ExtensionSystem.PluginManager",
+        "isExtraImport": true,
+        "detail": "libs.ExtensionSystem.PluginManager",
+        "documentation": {}
+    },
+    {
+        "label": "ClampFSMDef",
+        "importPath": "clamp_fsm_def",
+        "description": "clamp_fsm_def",
+        "isExtraImport": true,
+        "detail": "clamp_fsm_def",
+        "documentation": {}
+    },
+    {
+        "label": "ClampFSMDef",
+        "importPath": "clamp_fsm_def",
+        "description": "clamp_fsm_def",
+        "isExtraImport": true,
+        "detail": "clamp_fsm_def",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "FSMNode",
+        "importPath": "fsm_base",
+        "description": "fsm_base",
+        "isExtraImport": true,
+        "detail": "fsm_base",
+        "documentation": {}
+    },
+    {
+        "label": "FSMBase",
+        "importPath": "fsm_base",
+        "description": "fsm_base",
+        "isExtraImport": true,
+        "detail": "fsm_base",
+        "documentation": {}
+    },
+    {
+        "label": "ClampFSM",
+        "importPath": "clamp_fsm",
+        "description": "clamp_fsm",
+        "isExtraImport": true,
+        "detail": "clamp_fsm",
+        "documentation": {}
+    },
+    {
+        "label": "FSMEvent",
+        "kind": 6,
+        "importPath": "generator.gen",
+        "description": "generator.gen",
+        "peekOfCode": "class FSMEvent():\n    '''FSMEvent'''\n    def __init__(self):\n        self.id = 0\n        self.name = ''\nclass FSMState():\n    '''FSMState'''\n    class Action():\n        '''Action'''\n        def __init__(self):",
+        "detail": "generator.gen",
+        "documentation": {}
+    },
+    {
+        "label": "FSMState",
+        "kind": 6,
+        "importPath": "generator.gen",
+        "description": "generator.gen",
+        "peekOfCode": "class FSMState():\n    '''FSMState'''\n    class Action():\n        '''Action'''\n        def __init__(self):\n            self.event = ''\n            self.describe = ''\n    class Transition():\n        '''Transition'''\n        def __init__(self):",
+        "detail": "generator.gen",
+        "documentation": {}
+    },
+    {
+        "label": "FSMXML",
+        "kind": 6,
+        "importPath": "generator.gen",
+        "description": "generator.gen",
+        "peekOfCode": "class FSMXML():\n    '''FSMXML'''\n    def __init__(self, filename):\n        self.name = ''\n        self.events = []\n        self.states = []\n        self.first_state = ''\n        self.auto_transit_event = ''\n        element_stack = []\n        def start_element(name, attrs):",
+        "detail": "generator.gen",
+        "documentation": {}
+    },
+    {
+        "label": "Generator",
+        "kind": 6,
+        "importPath": "generator.gen",
+        "description": "generator.gen",
+        "peekOfCode": "class Generator():\n    '''Generator'''\n    def __init__(self, template):\n        # self.__template = template\n        path = os.path.dirname(__file__) + '/'\n        env = Environment(loader=FileSystemLoader(path),\n                          trim_blocks=True,\n                          lstrip_blocks=True)\n        self.template = env.get_template(template)\n    def gen(self, fsm, path):",
+        "detail": "generator.gen",
+        "documentation": {}
+    },
+    {
+        "label": "Action",
+        "kind": 6,
+        "importPath": "plotter.src.libs.ActionSystem.Action",
+        "description": "plotter.src.libs.ActionSystem.Action",
+        "peekOfCode": "class Action(QObject):\n    class State:\n        Idle = 0\n        Running = 1\n        Disabled = 2\n    triggered = Signal()\n    def __init__(self):\n        super().__init__()\nclass TabAction(Action):\n    def __init__(self, title=\"\", icon=QIcon()):",
+        "detail": "plotter.src.libs.ActionSystem.Action",
+        "documentation": {}
+    },
+    {
+        "label": "TabAction",
+        "kind": 6,
+        "importPath": "plotter.src.libs.ActionSystem.Action",
+        "description": "plotter.src.libs.ActionSystem.Action",
+        "peekOfCode": "class TabAction(Action):\n    def __init__(self, title=\"\", icon=QIcon()):\n        super().__init__()\n        self.__button = QToolButton()\n        self.__button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)\n        self.__button.setSizePolicy(\n            QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding\n        )\n        self.__button.setIconSize(QSize(40, 40))\n        self.__button.setText(title)",
+        "detail": "plotter.src.libs.ActionSystem.Action",
+        "documentation": {}
+    },
+    {
+        "label": "ActionContainer",
+        "kind": 6,
+        "importPath": "plotter.src.libs.ActionSystem.ActionContainer",
+        "description": "plotter.src.libs.ActionSystem.ActionContainer",
+        "peekOfCode": "class ActionContainer:\n    def registerActionGroup(self, groupId, title=\"\", icon=QIcon()):\n        pass\n    def unregisterActionGroup(self, groupId):\n        pass\n    def actionGroup(self, groupId):\n        pass\nclass TabContainer(ActionContainer):\n    def __init__(self, tabWidget):\n        super().__init__()",
+        "detail": "plotter.src.libs.ActionSystem.ActionContainer",
+        "documentation": {}
+    },
+    {
+        "label": "TabContainer",
+        "kind": 6,
+        "importPath": "plotter.src.libs.ActionSystem.ActionContainer",
+        "description": "plotter.src.libs.ActionSystem.ActionContainer",
+        "peekOfCode": "class TabContainer(ActionContainer):\n    def __init__(self, tabWidget):\n        super().__init__()\n        self.__groups = {}\n        self.__tabWidget = tabWidget\n    def registerActionGroup(self, groupId, title=\"\", icon=QIcon()):\n        if groupId in self.__groups:\n            return self.__groups[groupId]\n        group = TabGroup()\n        self.__tabWidget.addTab(group.page(), icon, title)",
+        "detail": "plotter.src.libs.ActionSystem.ActionContainer",
+        "documentation": {}
+    },
+    {
+        "label": "ActionGroup",
+        "kind": 6,
+        "importPath": "plotter.src.libs.ActionSystem.ActionGroup",
+        "description": "plotter.src.libs.ActionSystem.ActionGroup",
+        "peekOfCode": "class ActionGroup:\n    def registerActionGroup(self, groupId, title=\"\", icon=QIcon()):\n        pass\n    def registerAction(self, actionId, title=\"\", icon=QIcon()):\n        pass\n    def unregisterActionGroup(self, groupId):\n        pass\n    def unregisterAction(self, actionId):\n        pass\n    def actionGroup(self, groupId):",
+        "detail": "plotter.src.libs.ActionSystem.ActionGroup",
+        "documentation": {}
+    },
+    {
+        "label": "TabGroup",
+        "kind": 6,
+        "importPath": "plotter.src.libs.ActionSystem.ActionGroup",
+        "description": "plotter.src.libs.ActionSystem.ActionGroup",
+        "peekOfCode": "class TabGroup(ActionGroup):\n    def __init__(self):\n        super().__init__()\n        self.__groups = {}\n        self.__actions = {}\n        self.__page = QWidget()\n        self.__page.setSizePolicy(\n            QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding\n        )\n        self.__hLayout = QHBoxLayout(self.__page)",
+        "detail": "plotter.src.libs.ActionSystem.ActionGroup",
+        "documentation": {}
+    },
+    {
+        "label": "IPlugin",
+        "kind": 6,
+        "importPath": "plotter.src.libs.ExtensionSystem.IPlugin",
+        "description": "plotter.src.libs.ExtensionSystem.IPlugin",
+        "peekOfCode": "class IPlugin():\n    def __init__(self) -> None:\n        pass\n    def initialize(self):\n        print(\"error:IPlugin is a interface\")",
+        "detail": "plotter.src.libs.ExtensionSystem.IPlugin",
+        "documentation": {}
+    },
+    {
+        "label": "PluginManager",
+        "kind": 6,
+        "importPath": "plotter.src.libs.ExtensionSystem.PluginManager",
+        "description": "plotter.src.libs.ExtensionSystem.PluginManager",
+        "peekOfCode": "class PluginManager():\n    def __init__(self):\n        self.__pluginPath = ''\n        self.__pluginSpecs = []\n    @property\n    def pluginSpecs(self):\n        return self.__pluginSpecs\n    def setPluginPath(self, path):\n        self.__pluginPath = path\n        self._readPluginPath()",
+        "detail": "plotter.src.libs.ExtensionSystem.PluginManager",
+        "documentation": {}
+    },
+    {
+        "label": "PluginSpec",
+        "kind": 6,
+        "importPath": "plotter.src.libs.ExtensionSystem.PluginSpec",
+        "description": "plotter.src.libs.ExtensionSystem.PluginSpec",
+        "peekOfCode": "class PluginSpec():\n    def __init__(self) -> None:\n        self.__name = ''\n        self.__modulePath = ''\n        self.__pluginInstance = None\n    @property\n    def name(self):\n        return self.__name\n    def readDescription(self, descFile):\n        with open(descFile, \"+r\") as f:",
+        "detail": "plotter.src.libs.ExtensionSystem.PluginSpec",
+        "documentation": {}
+    },
+    {
+        "label": "CorePlugin",
+        "kind": 6,
+        "importPath": "plotter.src.plugins.Core.CorePlugin",
+        "description": "plotter.src.plugins.Core.CorePlugin",
+        "peekOfCode": "class CorePlugin(IPlugin):\n    def __init__(self):\n        super().__init__()\n        self.__mainWin = MainWindow()\n    def initialize(self):\n        print(\"CorePlugin initialize\")\n        self.__mainWin.initialize()",
+        "detail": "plotter.src.plugins.Core.CorePlugin",
+        "documentation": {}
+    },
+    {
+        "label": "EventItem",
+        "kind": 6,
+        "importPath": "plotter.src.plugins.Core.FSMNodeItem",
+        "description": "plotter.src.plugins.Core.FSMNodeItem",
+        "peekOfCode": "class EventItem(QGraphicsItem):\n    def __init__(self, parentItem: QGraphicsItem = None) -> None:\n        super().__init__(parentItem)\n        self.__frameItem = QGraphicsRectItem(0, 0, 100, 60, self)\n        self.__titleItem = QGraphicsTextItem(\"entry\", self.__frameItem)\n        self.__titleItem.setTextInteractionFlags(\n            Qt.TextInteractionFlag.TextEditorInteraction)\n        self.__contentItem = QGraphicsTextItem(\n            \"do somothing.\", self.__frameItem)\n        self.__titleItem.setTextInteractionFlags(",
+        "detail": "plotter.src.plugins.Core.FSMNodeItem",
+        "documentation": {}
+    },
+    {
+        "label": "FSMNodeItem",
+        "kind": 6,
+        "importPath": "plotter.src.plugins.Core.FSMNodeItem",
+        "description": "plotter.src.plugins.Core.FSMNodeItem",
+        "peekOfCode": "class FSMNodeItem(QGraphicsItem):\n    def __init__(self) -> None:\n        super().__init__()\n        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable)\n        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)\n        self.__headerItem = QGraphicsRectItem(0, 0, 100, 20, self)\n        self.__titleItem = QGraphicsTextItem(\"MyItem\", self.__headerItem)\n        self.__titleItem.setTextInteractionFlags(\n            Qt.TextInteractionFlag.TextEditorInteraction\n        )",
+        "detail": "plotter.src.plugins.Core.FSMNodeItem",
+        "documentation": {}
+    },
+    {
+        "label": "MainWindow",
+        "kind": 6,
+        "importPath": "plotter.src.plugins.Core.MainWindow",
+        "description": "plotter.src.plugins.Core.MainWindow",
+        "peekOfCode": "class MainWindow(QMainWindow):\n    def __init__(self):\n        super().__init__()\n        self.__actionContainer = None\n        self.__scene = None\n    def initialize(self):\n        self.resize(800, 600)\n        centralWidget = QWidget(self)\n        self.setCentralWidget(centralWidget)\n        vLayout = QVBoxLayout()",
+        "detail": "plotter.src.plugins.Core.MainWindow",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "plotter.src.main",
+        "description": "plotter.src.main",
+        "peekOfCode": "def main():\n    app = QtWidgets.QApplication(sys.argv)\n    pluginManager = PluginManager()\n    path = os.path.join(os.path.dirname(__file__), \"plugins\")\n    pluginManager.setPluginPath(path)\n    pluginManager.loadPlugins()\n    sys.exit(app.exec())\nif __name__ == \"__main__\":\n    main()",
+        "detail": "plotter.src.main",
+        "documentation": {}
+    },
+    {
+        "label": "ClampFS",
+        "kind": 6,
+        "importPath": "samples.python.clamp_fsm",
+        "description": "samples.python.clamp_fsm",
+        "peekOfCode": "class ClampFSM (ClampFSMDef):\n    '''ClampFSM'''\n    def __init__(self, context):\n        super().__init__()\n        self.__context = context\n    def _TIGHT_on_enter(self):\n        print(\"ClampFSM::TightOnEnter\")\n        self.__context.write(\"TightOnEnter\\n\")\n    def _TIGHT_on_exit(self):\n        print(\"ClampFSM::TightOnExit\")",
+        "detail": "samples.python.clamp_fsm",
+        "documentation": {}
+    },
+    {
+        "label": "ClampFSMDef",
+        "kind": 6,
+        "importPath": "samples.python.clamp_fsm_def",
+        "description": "samples.python.clamp_fsm_def",
+        "peekOfCode": "class ClampFSMDef(FSMBase):\n    '''ClampFSMDef'''\n    class EventId(Enum):\n        '''EventId'''\n        TO_TIGHT = 1\n        TO_LOOSE = 2\n        TRIGGER = 3\n    class StateId(Enum):\n        '''StateId'''\n        TIGHT = 1",
+        "detail": "samples.python.clamp_fsm_def",
+        "documentation": {}
+    },
+    {
+        "label": "FSMNode",
+        "kind": 6,
+        "importPath": "samples.python.fsm_base",
+        "description": "samples.python.fsm_base",
+        "peekOfCode": "class FSMNode():\n    '''FSMNode'''\n    def __init__(self):\n        self.state_id = 0\n        self.entry_action = None\n        self.exit_action = None\n        self.event_actions = {}\n        self.transitions = {}\nclass FSMBase(ABC):\n    '''FSMBase'''",
+        "detail": "samples.python.fsm_base",
+        "documentation": {}
+    },
+    {
+        "label": "FSMBase",
+        "kind": 6,
+        "importPath": "samples.python.fsm_base",
+        "description": "samples.python.fsm_base",
+        "peekOfCode": "class FSMBase(ABC):\n    '''FSMBase'''\n    def __init__(self):\n        self._fsm_name = \"\"\n        self._fsm_nodes = {}\n        self._current_state_id = 0\n    def current_state_id(self):\n        '''current_state_id'''\n        return self._current_state_id\n    def post_event(self, event_id):",
+        "detail": "samples.python.fsm_base",
+        "documentation": {}
+    }
+]
