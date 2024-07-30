@@ -10,7 +10,8 @@ from PySide6.QtWidgets import (
 
 from libs.ActionSystem.ActionContainer import TabContainer
 
-from plugins.Core.FSMNodeItem import FSMNodeItem,EventItem
+from plugins.Core.FSMNodeItem import FSMNodeItem, MyTextItem
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -43,10 +44,9 @@ class MainWindow(QMainWindow):
         vLayout.addWidget(view)
 
         self.__scene = QGraphicsScene(centralWidget)
-        self.__scene.sceneRectChanged.connect(lambda rec: print(rec))
+        # self.__scene.sceneRectChanged.connect(lambda rec: print(rec))
         view.setScene(self.__scene)
-        self.__scene.addEllipse(0, 0, 100, 60)
+
         self.__scene.addItem(FSMNodeItem())
-        self.__scene.addItem(EventItem())
 
         self.show()
