@@ -1,16 +1,10 @@
-from PySide6.QtWidgets import (
-    QMainWindow,
-    QWidget,
-    QVBoxLayout,
-    QTabWidget,
-    QSizePolicy,
-    QGraphicsView,
-    QGraphicsScene,
-)
+from PySide6.QtWidgets import *
 
 from libs.ActionSystem.ActionContainer import TabContainer
 
-from plugins.Core.FSMNodeItem import FSMNodeItem, MyTextItem
+from plugins.Core.GraphicsView import *
+from plugins.Core.GraphicsScene import *
+from plugins.Core.FSMNodeItem import *
 
 
 class MainWindow(QMainWindow):
@@ -40,13 +34,14 @@ class MainWindow(QMainWindow):
         group = self.__actionContainer.registerActionGroup(1, "test")
         group.registerAction(1, "test")
 
-        view = QGraphicsView(centralWidget)
+        view = GraphicsView(centralWidget)
         vLayout.addWidget(view)
 
-        self.__scene = QGraphicsScene(centralWidget)
+        self.__scene = GraphicsScene(centralWidget)
         # self.__scene.sceneRectChanged.connect(lambda rec: print(rec))
         view.setScene(self.__scene)
 
+        self.__scene.addItem(FSMNodeItem_())
         self.__scene.addItem(FSMNodeItem())
 
         self.show()

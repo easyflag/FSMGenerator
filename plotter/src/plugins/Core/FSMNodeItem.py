@@ -2,16 +2,9 @@ from enum import Enum
 from typing import Any
 import math
 
-from PySide6.QtGui import QFontMetrics, QFont
-from PySide6.QtWidgets import (
-    QGraphicsItem,
-    QGraphicsRectItem,
-    QGraphicsSceneMouseEvent,
-    QGraphicsTextItem,
-    QMenu,
-    QGraphicsSceneContextMenuEvent
-)
-from PySide6.QtCore import Qt, QRectF
+from PySide6.QtGui import *
+from PySide6.QtWidgets import *
+from PySide6.QtCore import *
 
 
 class MyTextItem(QGraphicsTextItem):
@@ -32,11 +25,12 @@ class MyTextItem(QGraphicsTextItem):
         return super().itemChange(change, value)
 
 
-class FSMNodeItem(QGraphicsRectItem):
+class FSMNodeItem_(QGraphicsRectItem):
     class TitleItem(QGraphicsRectItem):
         def __init__(self, parentItem: QGraphicsItem):
             super().__init__(parentItem)
 
+            self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable)
             self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)
 
             self.setRect(0, 0, 100, 20)
@@ -102,6 +96,8 @@ class FSMNodeItem(QGraphicsRectItem):
 
         def __init__(self, eventType: EventType, parentItem: QGraphicsItem):
             super().__init__(parentItem)
+            
+            self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable)
 
             self.__eventType = eventType
 
@@ -187,3 +183,63 @@ class FSMNodeItem(QGraphicsRectItem):
                 break
 
         self.__relayout()
+
+    def mousePressEvent(self, event):
+        print("FSMNodeItem_", event, event.isAccepted())
+        return super().mousePressEvent(event)
+
+
+class FSMNodeItem(QGraphicsProxyWidget):
+    def __init__(self):
+        super().__init__()
+        self.__anchorPos = QPointF(0, 0)
+
+        f = QFrame()
+        f.setFrameShape(QFrame.Shape.Box)
+        f.setFrameShadow(QFrame.Shadow.Raised)
+
+        vBox = QVBoxLayout()
+        vBox.setContentsMargins(1, 1, 1, 1)
+        f.setLayout(vBox)
+
+        le = QLineEdit("Node1")
+        le.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        le.setFrame(False)
+        le.setStyleSheet("QLineEdit{ background: lightblue; }")
+        vBox.addWidget(le)
+
+        hBox = QHBoxLayout()
+        vBox.addLayout(hBox)
+
+        self.__lw = QListWidget()
+        self.__lw.setMaximumWidth(80)
+        # self.__lw.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        hBox.addWidget(self.__lw)
+        self.__te = QTextEdit()
+        # self.__te.setFrameShape(QFrame.Shape.NoFrame)
+        hBox.addWidget(self.__te)
+
+        # t = QTabWidget()
+        # t.setTabsClosable(True)
+        # t.addTab(QTextEdit(), "")
+        # t.addTab(QTextEdit(), "")
+        # vBox.addWidget(t)
+
+        self.setWidget(f)
+
+        self.addTab("entry")
+        self.addTab("exit")
+
+        self.setGeometry(0, 0, 300, 300)
+
+    def addTab(self, title):
+        item = QListWidgetItem(title)
+        item.setFlags(Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsEditable | Qt.ItemFlag.ItemIsEnabled)
+        self.__lw.addItem(item)
+
+    def mousePressEvent(self, event):
+        self.__anchorPos = event.pos()
+
+    def mouseMoveEvent(self, event):
+        p = event.scenePos() - self.__anchorPos
+        self.setPos(p)
