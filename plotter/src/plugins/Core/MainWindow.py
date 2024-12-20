@@ -41,7 +41,8 @@ class MainWindow(QMainWindow):
         # self.__scene.sceneRectChanged.connect(lambda rec: print(rec))
         view.setScene(self.__scene)
 
+        self.__scene.addItem(FSMLinkLine())
         self.__scene.addItem(FSMNodeItem_())
-        self.__scene.addItem(FSMNodeItem())
+        self.__scene.addItem(FSMNode())
 
         self.show()

@@ -96,7 +96,7 @@ class FSMNodeItem_(QGraphicsRectItem):
 
         def __init__(self, eventType: EventType, parentItem: QGraphicsItem):
             super().__init__(parentItem)
-            
+
             self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable)
 
             self.__eventType = eventType
@@ -189,9 +189,10 @@ class FSMNodeItem_(QGraphicsRectItem):
         return super().mousePressEvent(event)
 
 
-class FSMNodeItem(QGraphicsProxyWidget):
+class FSMNode(QGraphicsProxyWidget):
     def __init__(self):
         super().__init__()
+
         self.__anchorPos = QPointF(0, 0)
 
         f = QFrame()
@@ -243,3 +244,42 @@ class FSMNodeItem(QGraphicsProxyWidget):
     def mouseMoveEvent(self, event):
         p = event.scenePos() - self.__anchorPos
         self.setPos(p)
+
+
+class FSMDragHandle(QGraphicsEllipseItem):
+    def __init__(self, parentItem: QGraphicsItem):
+        super().__init__(parentItem)
+        
+        # self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)
+
+        self.setRect(0, 0, 5, 5)
+        
+    def hoverEnterEvent(self, event):
+        print("FSMDragHandle hoverEnterEvent")
+        return super().hoverEnterEvent(event)
+    
+    def mousePressEvent(self, event):
+        print("FSMDragHandle mousePressEvent")
+        return super().mousePressEvent(event)
+
+
+class FSMLinkLine(QGraphicsLineItem):
+    def __init__(self):
+        super().__init__()
+
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable)
+
+        self.setLine(0, 0, 50, 50)
+
+        self.__headDragHandle = FSMDragHandle(self)
+        self.__headDragHandle.setVisible(False)
+
+    def itemChange(self, change: QGraphicsItem.GraphicsItemChange, value: Any):
+        if change == QGraphicsItem.GraphicsItemChange.ItemSelectedChange:
+            if value:
+                self.__headDragHandle.setVisible(True)
+            else:
+                self.__headDragHandle.setVisible(False)
+
+        return super().itemChange(change, value)
