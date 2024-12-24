@@ -250,11 +250,12 @@ class FSMDragHandle(QGraphicsEllipseItem):
     def __init__(self, parentItem: QGraphicsItem = None):
         super().__init__(parentItem)
 
-        self.__parentItem = parentItem
-        self.__mouseMoveCB = None
-
         self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)
         self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable)
+        
+        self.setBrush(Qt.GlobalColor.white)
+        
+        self.__mouseMoveCB = None
 
     def setMouseMoveCB(self, mouseMoveCB):
         self.__mouseMoveCB = mouseMoveCB
@@ -264,7 +265,7 @@ class FSMDragHandle(QGraphicsEllipseItem):
         if self.__mouseMoveCB:
             c = self.rect().center()
             p = self.mapToParent(c)
-            self.__mouseMoveCB(p, True)
+            self.__mouseMoveCB(p)
         return super().mouseMoveEvent(event)
 
 
@@ -276,19 +277,27 @@ class FSMLinkLine(QGraphicsLineItem):
         self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable)
 
         # self.setHandlesChildEvents(True)
-
         self.setLine(0, 0, 50, 50)
 
         self.__headDragHandle = FSMDragHandle(self)
-        self.__headDragHandle.setMouseMoveCB(self.__handleDragHandleMove)
+        self.__headDragHandle.setMouseMoveCB(lambda pos: self.__handleDragHandleMove(pos, True))
         # self.__headDragHandle.setVisible(False)
         p1 = self.line().p1()
         self.__headDragHandle.setRect(p1.x() - 2, p1.y() - 2, 4, 4)
+
+        self.__tailDragHandle = FSMDragHandle(self)
+        self.__tailDragHandle.setMouseMoveCB(lambda pos: self.__handleDragHandleMove(pos, False))
+        # self.__headDragHandle.setVisible(False)
+        p2 = self.line().p2()
+        self.__tailDragHandle.setRect(p2.x() - 2, p2.y() - 2, 4, 4)
 
     def __handleDragHandleMove(self, pos: QPointF, isHead: bool):
         if isHead:
             tail = self.line().p2()
             self.setLine(pos.x(), pos.y(), tail.x(), tail.y())
+        else:
+            head = self.line().p1()
+            self.setLine(head.x(), head.y(), pos.x(), pos.y())
 
     # def itemChange(self, change: QGraphicsItem.GraphicsItemChange, value: Any):
     #     if change == QGraphicsItem.GraphicsItemChange.ItemSelectedHasChanged:
@@ -298,7 +307,7 @@ class FSMLinkLine(QGraphicsLineItem):
     #             self.__headDragHandle.setVisible(False)
 
     #     return super().itemChange(change, value)
-    
+
     def mouseMoveEvent(self, event):
         print(self.line(), self.scenePos())
         return super().mouseMoveEvent(event)
